@@ -1,0 +1,12 @@
+[Unit]
+Description=Plex Media Server
+Requires=docker.service
+After=docker.service
+
+[Service]
+Restart=always
+ExecStart=/usr/bin/docker start -a plex
+ExecStop=/usr/bin/docker stop -t 7 plex
+
+[Install]
+WantedBy=local.target
