@@ -11,7 +11,7 @@
 - `-v /media/plex:/media/plex:z` - mount local media directory to container media directory. :z is needed for selinux
 - `-p 32400:32400` - bind port 32400 to be accessible on the host
 
-##### The following ports can also be used for different services:
+##### Ports
 
     UDP: 1900 (for access to the Plex DLNA Server)
     TCP: 3005 (for controlling Plex Home Theater via Plex Companion)
@@ -36,9 +36,13 @@ A systemd unit file has been included. Place in /etc/systemd/system to `systemct
 
 If you need to explicitly open the firewall ports use the firewalld definition provided in the repo.
 
-Add to /etc/firewalld/services/plex.xml and enable. Docker will have to be restarted to recreate its firewall
+Add to /etc/firewalld/services/plex.xml and enable. Docker may have to be restarted to recreate its firewall
 
     cp plex.xml /etc/firewalld/services/plex.xml
     firewall-cmd --reload
     firewall-cmd --add-service=plex --permanent
     systemctl restart docker
+
+### Notes
+
+If anything is unclear or in need of improvement, please feel free to fork and submit a pull request.
