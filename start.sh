@@ -1,12 +1,10 @@
 #!/bin/bash
 
-PMS_BIN="Plex Media Server"
+# Source sysconfig file
+. /etc/sysconfig/PlexMediaServer
 
-PROG="PlexMediaServer"
-CONFIG="/etc/sysconfig/$PROG"
-
-# Source config
-. $CONFIG
+PID_FILE=$PLEX_MEDIA_SERVER_APPLICATION_SUPPORT_DIR/Plex\ Media\ Server/plexmediaserver.pid
+[[ -f "$PID_FILE" ]] && rm -f "$PID_FILE"
 
 if [ ! -f "$PLEX_MEDIA_SERVER_APPLICATION_SUPPORT_DIR" ];
 then
@@ -16,5 +14,7 @@ then
         exit 1
     fi
 fi
-echo "$PMS_BIN is started"
-cd $PLEX_MEDIA_SERVER_HOME && ./Plex\ Media\ Server && tail -f $PLEX_MEDIA_SERVER_APPLICATION_SUPPORT_DIR/Library/Application Support/Plex Media Server/Logs/*
+echo "Plex Media Server is started"
+cd $PLEX_MEDIA_SERVER_HOME
+./Plex\ Media\ Server &
+tail -f $PLEX_MEDIA_SERVER_APPLICATION_SUPPORT_DIR/Plex\ Media\ Server/Logs/PMS\ Plugin\ Logs/*

@@ -2,7 +2,7 @@
 
 ## First Run
 
-    docker run -d -it --name=plex --hostname=rex -v plex:/root/Library/Application\ Support -v /media/plex:/media/plex:z -p 32400:32400 -p 1900:1900 -p 3005:3005 -p 32410:32410/udp -p 32412:32412/udp -p 32413:32413/udp -p 32414:32414/udp -p 32469:32469 mantlepro/plex
+    docker run -d -it --name=plex --hostname=rex -v plex:/opt -v /media/plex:/media/plex:z -p 32400:32400 -p 1900:1900 -p 3005:3005 -p 32410:32410/udp -p 32412:32412/udp -p 32413:32413/udp -p 32414:32414/udp -p 32469:32469 plex mantlepro/plex
 
 - `--name=desired_name` (if other than "plex", change exec line in systemd unit file to match)
 - `-v plex:/root/Library/Application\ Support` - mount metadata directory on host docker volume
