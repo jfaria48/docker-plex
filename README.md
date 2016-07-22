@@ -4,6 +4,8 @@
 
     docker run -d -it --name=plex --hostname=rex -v plex:/opt -v /media/plex:/media/plex:z -p 32400:32400 -p 1900:1900 -p 3005:3005 -p 32410:32410/udp -p 32412:32412/udp -p 32413:32413/udp -p 32414:32414/udp -p 32469:32469 plex mantlepro/plex
 
+- `-d` run in detached mode
+- `-it` interactive, pseudo tty
 - `--name=desired_name` (if other than "plex", change exec line in systemd unit file to match)
 - `-v plex:/root/Library/Application\ Support` - mount metadata directory on host docker volume
 - `-v /media/plex:/media/plex:z` - mount local media directory to container media directory. :z is needed for selinux
@@ -32,12 +34,11 @@ A systemd unit file has been included. Place in /etc/systemd/system to `systemct
     systemctl enable plex
     systemctl start plex
 
-If networking is configured manually or you need to explicitly open the firewall ports, a firewalld xml has also been provided.
+If you need to explicitly open the firewall ports use the firewalld definition provided in the repo.
 
 Add to /etc/firewalld/services/plex.xml and enable. Docker will have to be restarted to recreate its firewall
 
     cp plex.xml /etc/firewalld/services/plex.xml
     firewall-cmd --reload
     firewall-cmd --add-service=plex --permanent
-    firewall-cmd --reload
     systemctl restart docker
