@@ -13,7 +13,7 @@
 - `-p 32400:32400` - bind port 32400 to be accessible on the host
 
 
-##### Ports
+#### Ports
 
 
     UDP: 1900 (for access to the Plex DLNA Server)
@@ -24,7 +24,7 @@
     TCP: 32469 (for access to the Plex DLNA Server)
 
 
-### Set Up
+## Set Up
 
 Visit http://localhost:32400/web on the local machine to sign in and set up Plex Media Server.
 
@@ -53,6 +53,6 @@ Add to /etc/firewalld/services/plex.xml and enable. Docker may have to be restar
     systemctl restart docker
 
 
-### Notes
+## Notes
 
 If anything is unclear or in need of improvement, please feel free to fork and submit a pull request.
