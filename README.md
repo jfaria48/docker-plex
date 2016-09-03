@@ -55,4 +55,4 @@ Add to /etc/firewalld/services/plex.xml and enable. Docker may have to be restar
 
 ## Notes
 
-If anything is unclear or in need of improvement, please feel free to fork and submit a pull request.
+Pull requests are welcome.
