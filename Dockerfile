@@ -2,7 +2,7 @@ FROM centos
 MAINTAINER Josh Wheeler <mantlepro@gmail.com>
 WORKDIR /root
 RUN yum install -y iproute ca-certificates openssl wget
-RUN wget -q https://downloads.plex.tv/plex-media-server/1.0.2.2413-7caf41d/plexmediaserver-1.0.2.2413-7caf41d.x86_64.rpm
+RUN wget -q https://downloads.plex.tv/plex-media-server/1.5.6.3790-4613ce077/plexmediaserver-1.5.6.3790-4613ce077.x86_64.rpm
 RUN yum install -y plexmediaserver*.rpm
 RUN rm *.rpm
 COPY sysconfig /etc/sysconfig/PlexMediaServer
